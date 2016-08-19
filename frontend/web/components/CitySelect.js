@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { SearchBox } from 'react-google-maps'
 export const fields = [ 'city' ]
 
 class CitySelect extends Component {
+  handlePlacesChanged() {
+    const places = this.refs.searchBox.getPlaces()
+    console.log(places)
+  }
   render() {
-    const {fields: { city }} = this.props;
     return (
       <div className="city-select">
         <h2>Where are you going?</h2>
-        <input type="text" {...city}/>
       </div>
     )
   }
 }
 
-export default reduxForm({
-  form: 'city',
-  fields
-})(CitySelect)
+export default connect()(CitySelect)

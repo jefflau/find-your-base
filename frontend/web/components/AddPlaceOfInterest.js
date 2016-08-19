@@ -24,7 +24,7 @@ class AddPlaceOfInterest extends Component {
     clearTimeout(this.timeoutId)
     this.timeoutId = setTimeout(()=>{
       console.log('ajax')
-      this.props.handleSearch(this.state.value, 'taipei')
+      this.props.handleSearch(this.state.value, this.props.city.position)
     }, 200)
 
   }
@@ -38,8 +38,4 @@ class AddPlaceOfInterest extends Component {
   }
 }
 
-const mapStateToProps = ({ placesResults}) => ({
-  placesResults
-})
-
-export default connect(mapStateToProps, { handleSearch: searchPlaces })(AddPlaceOfInterest)
+export default connect(({ placesResults, city }) => ({ placesResults, city }), { handleSearch: searchPlaces })(AddPlaceOfInterest)

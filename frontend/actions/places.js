@@ -26,10 +26,10 @@ export const addSelectedPlace = (place: Object) => ({
   place
 })
 
-export const searchPlaces = (place: string, city: string) => (
+export const searchPlaces = (place: string, location: Object) => (
   (dispatch: Function) => {
     dispatch(requestPlaces(place))
-    return POI.searchPlaces(place, city)
+    return POI.searchPlaces(place, location)
       .then(places => dispatch(receivePlaces(places)))
       .catch(error => dispatch(fetchingPlacesError(error)))
   }

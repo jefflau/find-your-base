@@ -10,8 +10,8 @@ const searchPlaceUrl = '/venues/search'
 
 const credentials = `client_id=${client_id}&client_secret=${client_secret}&v=${version}&`
 
-export function searchPlaces(query: string, location: string) {
-  return fetch(`${rootUrl}${searchPlaceUrl}?${credentials}query=${query}&near=${location}`, { type: 'get'})
+export function searchPlaces(query: string, location: Object) {
+  return fetch(`${rootUrl}${searchPlaceUrl}?${credentials}query=${query}&ll=${location.lat},${location.lng}`, { type: 'get'})
     .then(res => res.json())
     .then(res => res.response.venues)
 }

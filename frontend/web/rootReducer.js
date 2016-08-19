@@ -4,6 +4,7 @@ import serverError from '../reducers/serverError'
 import config from '../reducers/config'
 import placesResults from '../reducers/placesResults'
 import selectedPlaces from '../reducers/selectedPlaces'
+import city from '../reducers/city'
 import { routerReducer } from 'react-router-redux'
 import { reducer as formReducer} from 'redux-form'
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   placesResults,
   selectedPlaces,
   config,
+  city,
   routing: routerReducer,
   form: formReducer
 })
