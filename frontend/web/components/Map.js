@@ -32,7 +32,8 @@ class Map extends Component {
     console.log(places[0].geometry.location.lat(), places[0].geometry.location.lng())
   }
   render(){
-    const { selectedPlaces } = this.props
+    const { selectedPlaces, city } = this.props
+    var defaultCenter = { lat: -25.363882, lng: 131.044922 }
     return (
       <div className="map">
         <section style={{height: "500px"}}>
@@ -46,9 +47,10 @@ class Map extends Component {
             }
             googleMapElement={
               <GoogleMap
+                center={city.position ? city.position : defaultCenter}
                 ref={(map) => console.log(map)}
-                defaultZoom={5}
-                defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+                defaultZoom={13}
+                defaultCenter={defaultCenter}
                 //onClick={props.onMapClick}}
               >
                 <SearchBox
@@ -80,4 +82,4 @@ class Map extends Component {
   }
 }
 
-export default connect(({ selectedPlaces }) => ({ selectedPlaces }), { setCity })(Map)
+export default connect(({ selectedPlaces, city }) => ({ selectedPlaces, city }), { setCity })(Map)
