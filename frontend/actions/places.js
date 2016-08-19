@@ -16,6 +16,11 @@ export const fetchingPlacesError = (error: Object) => ({
   error
 })
 
+export const addPOI = (place: Object) => ({
+  type: 'ADD_POI',
+  place
+})
+
 export const searchPlaces = (place: string, city: string) => (
   (dispatch: Function) => {
     dispatch(requestPlaces(place))
