@@ -6,7 +6,7 @@ class CitySelect extends Component {
   render() {
     const {fields: { city }} = this.props;
     return (
-      <div>
+      <div className="city-select">
         <h2>Where are you going?</h2>
         <input type="text" {...city}/>
       </div>

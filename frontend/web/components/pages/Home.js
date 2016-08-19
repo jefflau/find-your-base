@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import CitySelect from '../CitySelect'
 import AddPlace from '../AddPlaceOfInterest'
 import PlacesResults from '../PlacesResults'
+import SelectedPlaces from '../SelectedPlaces'
 
 class Home extends Component {
   props: {
@@ -14,11 +15,12 @@ class Home extends Component {
   render(){
 
     return (
-      <div className="home">
+      <div className="main-content">
         <h1>Home page for Find your base</h1>
         <CitySelect />
         <AddPlace />
         <PlacesResults />
+        <SelectedPlaces />
       </div>
     )
   }

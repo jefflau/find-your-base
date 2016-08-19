@@ -1,18 +1,21 @@
+// @flow
 import React from 'react'
 import { connect } from 'react-redux'
-import { addPOI } from '../../actions/places'
+import { addSelectedPlace } from '../../actions/places'
 
 const Place = ({ place, handlePlaceClick }) => (
-  <div onClick={handlePlaceClick}>
+  <li onClick={handlePlaceClick}>
     <h3>{place.name}</h3>
     <p>{place.formattedAddress}</p>
-  </div>
+  </li>
 )
 
 const PlacesResults = ({ placesResults, handlePlaceClick }) => (
-  <div>
-    {placesResults.map(place => <Place handlePlaceClick={handlePlaceClick.bind(null, place)} place={place} />)}
+  <div className="places-results">
+    <ul>
+      {placesResults.map(place => <Place handlePlaceClick={handlePlaceClick.bind(null, place)} place={place} />)}
+    </ul>
   </div>
 )
 
-export default connect(({ placesResults }) => ({ placesResults }), { handlePlaceClick: addPOI})(PlacesResults)
+export default connect(({ placesResults }) => ({ placesResults }), { handlePlaceClick: addSelectedPlace})(PlacesResults)

@@ -16,8 +16,13 @@ export const fetchingPlacesError = (error: Object) => ({
   error
 })
 
-export const addPOI = (place: Object) => ({
-  type: 'ADD_POI',
+export const removeSelectedPlace = (place: Object) => ({
+  type: 'REMOVE_SELECTED_PLACE',
+  place
+})
+
+export const addSelectedPlace = (place: Object) => ({
+  type: 'ADD_SELECTED_PLACE',
   place
 })
 
