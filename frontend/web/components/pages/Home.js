@@ -5,6 +5,7 @@ import CitySelect from '../CitySelect'
 import AddPlace from '../AddPlaceOfInterest'
 import PlacesResults from '../PlacesResults'
 import SelectedPlaces from '../SelectedPlaces'
+import Map from '../Map'
 
 class Home extends Component {
   props: {
@@ -21,6 +22,7 @@ class Home extends Component {
         <AddPlace />
         <PlacesResults />
         <SelectedPlaces />
+        <Map />
       </div>
     )
   }
