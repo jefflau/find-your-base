@@ -49,7 +49,7 @@ class Map extends Component {
               <GoogleMap
                 center={city.position ? city.position : defaultCenter}
                 ref={(map) => console.log(map)}
-                defaultZoom={13}
+                defaultZoom={11}
                 defaultCenter={defaultCenter}
                 //onClick={props.onMapClick}}
               >

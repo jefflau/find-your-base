@@ -8,7 +8,8 @@
   },
   "jest": {
     "automock": false,
-    "testRegex": "\\.test\\.js$"
+    "testRegex": "\\.test\\.js$",
+    "testPathIgnorePatterns":  ["<rootDir>/node_modules", "<rootDir>/node_modules/ios", "<rootDir>/node_modules/android"]
   },
   "dependencies": {
     "feed-read": "0.0.1",
