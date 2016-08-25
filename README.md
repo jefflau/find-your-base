@@ -1,4 +1,4 @@
-# Anime Drop - Latest Anime Season
+# Find Your Base - Plan your trip and find the best place to live based on places you want to go
 
 Uses React, Redux, React Router and Meteor. Flow is used for Static type checking and Jest for unit tests.
 
