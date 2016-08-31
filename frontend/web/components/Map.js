@@ -32,8 +32,9 @@ class Map extends Component {
     console.log(places[0].geometry.location.lat(), places[0].geometry.location.lng())
   }
   render(){
-    const { selectedPlaces, city } = this.props
+    const { selectedPlaces, city, midPoint } = this.props
     var defaultCenter = { lat: -25.363882, lng: 131.044922 }
+    console.log(midPoint)
     return (
       <div className="map">
         <section style={{height: "500px"}}>
@@ -73,6 +74,11 @@ class Map extends Component {
                       onRightclick={() => console.log(place)} />
                   );
                 })}
+                <Marker
+                      position={
+                        midPoint
+                      }
+                      onRightclick={() => console.log(place)} />
               </GoogleMap>
             }
           />
@@ -82,4 +88,25 @@ class Map extends Component {
   }
 }
 
-export default connect(({ selectedPlaces, city }) => ({ selectedPlaces, city }), { setCity })(Map)
+const pointAvg = (tot, legs) => ({lat:tot.lat/legs, lng: tot.lng/legs})
+
+const midPointCalc = (state) =>
+ pointAvg(
+  state.reduce((acc, curr) =>
+      ({
+        lat: acc.lat + curr.location.lat,
+        lng: acc.lng + curr.location.lng
+      }),
+    {lat: 0, lng: 0}
+  ),
+  state.length
+)
+
+const mapStateToProps = ({ selectedPlaces, city }) =>
+  ({
+    selectedPlaces,
+    city,
+    midPoint: midPointCalc(selectedPlaces)
+  })
+
+export default connect(mapStateToProps, { setCity })(Map)
