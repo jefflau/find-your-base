@@ -31,11 +31,11 @@ class Map extends Component {
         lng: places[0].geometry.location.lng()
       }
     })
-    console.log(places[0].geometry.location.lat(), places[0].geometry.location.lng())
   }
   render(){
     const { selectedPlaces, city, midPoint } = this.props
     var defaultCenter = { lat: -25.363882, lng: 131.044922 }
+    console.log(midPoint)
     searchHotels(midPoint).then(function (msg){console.log('search result **: ', msg)}).catch(console.error)
     return (
       <div className="map">
@@ -90,11 +90,11 @@ class Map extends Component {
   }
 }
 
-const mapStateToProps = ({ selectedPlaces, city }) =>
+const mapStateToProps = ({ selectedPlaces, city, midPoint }) =>
   ({
     selectedPlaces,
     city,
-    midPoint: midPointCalc(selectedPlaces)
+    midPoint
   })
 
 export default connect(mapStateToProps, { setCity })(Map)

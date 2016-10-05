@@ -1,5 +1,6 @@
 // @flow
 import 'fetch-everywhere'
+import 'meteor/meteor'
 
 function searchHotels ({lat, lng}) {
 
@@ -7,7 +8,7 @@ function searchHotels ({lat, lng}) {
                   &user_lat=${lat}
                   &user_lng=${lng}`;
 
-    return fetch(baseUrl, {method: 'GET', mode: 'no-cors'});
+    return fetch(baseUrl, {method: 'GET', }).then(res => res.json());
 
 }
 

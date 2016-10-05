@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { connect } from 'react-redux'
-import { addSelectedPlace } from '../../actions/places'
+import { selectPlace } from '../../actions/places'
 
 const Place = ({ place, handlePlaceClick }) => (
   <li onClick={handlePlaceClick}>
@@ -18,4 +18,4 @@ const PlacesResults = ({ placesResults, handlePlaceClick }) => (
   </div>
 )
 
-export default connect(({ placesResults }) => ({ placesResults }), { handlePlaceClick: addSelectedPlace})(PlacesResults)
+export default connect(({ placesResults }) => ({ placesResults }), { handlePlaceClick: selectPlace})(PlacesResults)

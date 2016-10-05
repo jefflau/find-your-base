@@ -26,6 +26,20 @@ export const addSelectedPlace = (place: Object) => ({
   place
 })
 
+const calculateMidpoint = (places: Array<Object>) => ({
+  type: 'CALCULATE_MIDPOINT',
+  places
+})
+
+
+export const selectPlace = (place: Object) => (
+  (dispatch: Function, getState: Function) => {
+    dispatch(addSelectedPlace((place)))
+    let places = getState().selectedPlaces
+    dispatch(calculateMidpoint(places))
+  }
+)
+
 export const searchPlaces = (place: string, location: Object) => (
   (dispatch: Function) => {
     dispatch(requestPlaces(place))
