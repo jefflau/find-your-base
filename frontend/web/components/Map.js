@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { GoogleMapLoader, GoogleMap, Marker, SearchBox } from "react-google-maps";
 import { connect } from 'react-redux'
 import { setCity } from '../../actions/city'
+import { midPointCalc } from '../../reducers/placesResults'
+import { searchHotels } from '../../api/airbnb'
 
 const inputStyle = {
   "border": `1px solid transparent`,
@@ -34,7 +36,7 @@ class Map extends Component {
   render(){
     const { selectedPlaces, city, midPoint } = this.props
     var defaultCenter = { lat: -25.363882, lng: 131.044922 }
-    console.log(midPoint)
+    searchHotels(midPoint).then(function (msg){console.log('search result **: ', msg)}).catch(console.error)
     return (
       <div className="map">
         <section style={{height: "500px"}}>
@@ -87,20 +89,6 @@ class Map extends Component {
     )
   }
 }
-
-const pointAvg = (tot, legs) => ({lat:tot.lat/legs, lng: tot.lng/legs})
-
-const midPointCalc = (state) =>
- pointAvg(
-  state.reduce((acc, curr) =>
-      ({
-        lat: acc.lat + curr.location.lat,
-        lng: acc.lng + curr.location.lng
-      }),
-    {lat: 0, lng: 0}
-  ),
-  state.length
-)
 
 const mapStateToProps = ({ selectedPlaces, city }) =>
   ({

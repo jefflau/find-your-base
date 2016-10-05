@@ -3,3 +3,4 @@ node_modules/
 .meteor/dev_bundle
 npm-debug.log
 .idea
+*.gzip
