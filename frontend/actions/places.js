@@ -1,5 +1,6 @@
 // @flow
 import * as POI from '../api/poi'
+import { getHotels } from './hotels'
 
 const requestPlaces = (place: string) => ({
   type: 'REQUEST_PLACES',
@@ -37,6 +38,8 @@ export const selectPlace = (place: Object) => (
     dispatch(addSelectedPlace((place)))
     let places = getState().selectedPlaces
     dispatch(calculateMidpoint(places))
+    let midPoint = getState().midPoint
+    dispatch(getHotels(midPoint))
   }
 )
 

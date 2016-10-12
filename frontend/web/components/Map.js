@@ -36,7 +36,7 @@ class Map extends Component {
     const { selectedPlaces, city, midPoint } = this.props
     var defaultCenter = { lat: -25.363882, lng: 131.044922 }
     console.log(midPoint)
-    searchHotels(midPoint).then(function (msg){console.log('search result **: ', msg)}).catch(console.error)
+    
     return (
       <div className="map">
         <section style={{height: "500px"}}>

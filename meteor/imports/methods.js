@@ -8,6 +8,8 @@ function searchHotels ({lat, lng}) {
                   &user_lat=${lat}
                   &user_lng=${lng}`;
 
+    console.log(baseUrl)
+
     return fetch(baseUrl, {method: 'GET', }).then(res => res.json());
 
 }
